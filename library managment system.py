@@ -9,12 +9,29 @@ class Book:
         if not self.is_borrowed:
             self.is_borrowed = True
             return True
-            return False
+        return False
+
     def return_book(self):
         if self.is_borrowed:
             self.is_borrowed = False
             return True
-            return False
+        return False
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def remove_book(self, book):
+        if book in self.books:
+            self.books.remove(book)
+            return True
+        return False
+
+    def list_books(self):
+        return [book for book in self.books if not book.is_borrowed]
 
 class User:
     def __init__(self, name, user_id):
